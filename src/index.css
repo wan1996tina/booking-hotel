@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  /* font */
+  --font-serif-tc: 'Noto Serif TC';
+
+  /* color */
+  --color-primary-120: #7b6651;
+  --color-primary-100: #bf9d7d;
+  --color-primary-80: #d0b79f;
+  --color-primary-60: #e1d1c2;
+  --color-primary-40: #f1eae4;
+  --color-primary-10: #faf7f5;
+
+  --color-neutral-100: #000000;
+  --color-neutral-80: #4b4b4b;
+  --color-neutral-60: #909090;
+  --color-neutral-40: #ececec;
+  --color-neutral-10: #f9f9f9;
+  --color-neutral-0: #ffffff;
+}
+
+@layer components {
+  .text-display {
+    /* 100px heading */
+    @apply text-[min(5.2vw,6.25rem)] font-bold;
+    @apply leading-[1.2] tracking-[0.05em];
+  }
+
+  .text-h1 {
+    /* 48px heading */
+    @apply text-[min(2.5vw,3rem)] font-bold;
+    @apply leading-[1.2] tracking-[0.05em];
+  }
+
+  .text-h2 {
+    /* 40px heading */
+    @apply text-[min(2.1vw,2.5rem)] font-bold;
+    @apply leading-[1.2] tracking-[0.05em];
+  }
+
+  .text-h3 {
+    /* 32px heading */
+    @apply text-[min(1.66vw,2rem)] font-bold;
+    @apply leading-[1.2] tracking-[0.05em];
+  }
+
+  .text-h4 {
+    /* 28px heading */
+    @apply text-[min(1.46vw,1.75rem)] font-bold;
+    @apply leading-[1.2] tracking-[0.05em];
+  }
+
+  .text-h5 {
+    /* 24px heading */
+    @apply text-[min(1.25vw,1.5rem)] font-bold;
+    @apply leading-[1.2] tracking-[0.05em];
+  }
+
+  .text-h6 {
+    /* 20px heading */
+    @apply text-[min(1.04vw,1.25rem)] font-bold;
+    @apply leading-[1.2] tracking-[0.05em];
+  }
+
+  .text-title {
+    @apply text-[16px] font-bold;
+    /* normal */
+    @apply leading-[1.5] tracking-[0.02em];
+  }
+
+  .text-subtitle {
+    @apply text-[14px] font-bold;
+    /* normal */
+    @apply leading-[1.5] tracking-[0.02em];
+  }
+
+  .text-body {
+    @apply text-[16px] font-medium;
+    /* normal */
+    @apply leading-[1.5] tracking-[0.02em];
+  }
+
+  .text-body2 {
+    @apply text-[14px] font-medium;
+    /* normal */
+    @apply leading-[1.5] tracking-[0.02em];
+  }
+
+  .text-tiny {
+    @apply text-[12px] font-medium;
+    /* normal */
+    @apply leading-[1.5] tracking-[0.02em];
+  }
+}
+.dot-grid-bg {
+  width: 200px; /* 11*14px (10px圓 + 4px間距) */
+  height: 200px;
+  background-image: radial-gradient(
+    circle at center,
+    blue 3px,
+    transparent 4px
+  );
+  background-size: 20px 20px; /* 間距 + 點直徑 */
+  /* background-repeat: repeat; */
+}
+
+:root {
+  font-family: 'Noto Serif TC', system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  /* place-items: center; */
+}
+
+@media (prefers-color-scheme: light) {
+}
