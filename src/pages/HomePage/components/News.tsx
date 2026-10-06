@@ -1,4 +1,5 @@
 import DecoLine from '@/components/layout/DecoLine'
+import DecoDot from '@/components/layout/DecoDot'
 import img1 from '@/assets/imgs/home-news-1.webp'
 import img2 from '@/assets/imgs/home-news-2.webp'
 import img3 from '@/assets/imgs/home-news-3.webp'
@@ -27,8 +28,12 @@ export default function News() {
   return (
     <section className="relative bg-primary-10 py-30 px-[16.25vw] flex gap-20">
       {/* deco dots */}
-      <div className="absolute z-0 top-[100px] right-[180px] w-[calc(11*19px)] h-[calc(11*19px)] bg-radial-[at_5px_5px] from-[2px] to-[2.5px] from-primary-60 to-transparent bg-size-[19px_19px] bg-repeat"></div>
-      <div className="absolute z-2 -bottom-[80px] left-[200px] w-[calc(11*19px)] h-[calc(11*19px)] bg-radial-[at_5px_5px] from-[2px] to-[2.5px] from-primary-60 to-transparent bg-size-[19px_19px] bg-repeat"></div>
+      <div className="absolute z-1 top-[100px] right-[180px]">
+        <DecoDot />
+      </div>
+      <div className="absolute z-1 -bottom-[80px] left-[200px]">
+        <DecoDot />
+      </div>
 
       <div className="grow basis-[140px] min-w-[140px]">
         <p className="text-h1 text-primary-100 mb-10">

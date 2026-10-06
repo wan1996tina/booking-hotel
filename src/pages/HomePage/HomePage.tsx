@@ -2,6 +2,7 @@ import Hero from './components/Hero'
 import News from './components/News'
 import About from './components/About'
 import Room from './components/Room'
+import Meal from './components/Meal'
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <News />
       <About />
       <Room />
+      <Meal />
     </>
   )
 }
