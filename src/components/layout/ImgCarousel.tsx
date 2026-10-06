@@ -1,7 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useImperativeHandle, type Ref } from 'react'
 import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
 
 import Icon from '@mdi/react'
+
+export interface ImgCarouselHandle {
+  prev: () => void
+  next: () => void
+  goTo: (idx: number) => void // 0-based，對應 imgUrls
+}
 
 interface ImgCarouselProps {
   imgUrls: string[]
@@ -10,6 +16,7 @@ interface ImgCarouselProps {
   autoLoop?: boolean
   showControlBtn?: boolean
   showOverlay?: boolean
+  ref?: Ref<ImgCarouselHandle>
 }
 // slide bar size
 // loop interval secs
@@ -21,6 +28,7 @@ export default function ImgCarousel({
   autoLoop = true,
   showControlBtn = false,
   showOverlay = true,
+  ref,
 }: ImgCarouselProps) {
   const carouselImgUrls = [imgUrls[imgUrls.length - 1], ...imgUrls, imgUrls[0]]
   const imgCounts = carouselImgUrls.length
@@ -46,6 +54,16 @@ export default function ImgCarousel({
     setActiveIndex(imgIdx)
   }
 
+  useImperativeHandle(
+    ref,
+    () => ({
+      prev,
+      next,
+      goTo: (idx: number) => switchToSpecificImg(idx + 1), // +1 是因為前面多一張 clone
+    }),
+    []
+  )
+
   // 自動輪播
   useEffect(() => {
     if (!autoLoop) return
@@ -57,7 +75,7 @@ export default function ImgCarousel({
     return () => {
       window.clearInterval(timer)
     }
-  }, [])
+  }, [activeIdx])
 
   // 處理輪播到頭尾 clone 的照片時，要切到特定照片
   useEffect(() => {

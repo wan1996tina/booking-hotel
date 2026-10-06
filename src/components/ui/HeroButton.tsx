@@ -7,7 +7,7 @@ export default function HeroButton({ label }: HeroButtonProps) {
 
   return (
     <div
-      className={`group bg-neutral-0 rounded-lg p-[min(2vw,2.5rem)] hover:bg-primary-100 ${transitionStyle} flex justify-end items-center gap-4 mx-1`}
+      className={`group cursor-pointer  bg-neutral-0 rounded-lg p-[min(2vw,2.5rem)] hover:bg-primary-100 ${transitionStyle} flex justify-end items-center gap-4 mx-1`}
     >
       <span
         className={`inline-block text-h5 text-neutral-100 group-hover:text-neutral-0 ${transitionStyle}`}

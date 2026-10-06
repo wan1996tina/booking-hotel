@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import img1 from '@/assets/imgs/home-room-1.webp'
 import img2 from '@/assets/imgs/home-room-2.webp'
 import img3 from '@/assets/imgs/home-room-3.webp'
@@ -6,7 +6,9 @@ import img4 from '@/assets/imgs/home-room-4.webp'
 import decoBg from '@/assets/deco/BG.svg'
 import decoLine from '@/assets/deco/Line.svg'
 
-import ImgCarousel from '@/components/layout/ImgCarousel'
+import ImgCarousel, {
+  type ImgCarouselHandle,
+} from '@/components/layout/ImgCarousel'
 import HeroButton from '@/components/ui/HeroButton'
 import Button from '@/components/ui/Button'
 import Icon from '@mdi/react'
@@ -45,14 +47,33 @@ interface Room {
 export default function Room() {
   const [imgUrls, setImgUrls] = useState<string[]>([])
   const [currentIdx, setCurrentIdx] = useState<number>(0)
+  const carouselRef = useRef<ImgCarouselHandle>(null)
 
   useEffect(() => {
     setImgUrls([img1, img2, img3, img4])
   }, [])
+
+  const handlePrevClick = () => {
+    setCurrentIdx(prev => {
+      const newIdx = Math.max(prev - 1, 0)
+      carouselRef.current?.goTo(newIdx)
+      return newIdx
+    })
+  }
+
+  const handleNextClick = () => {
+    setCurrentIdx(prev => {
+      const newIdx = Math.min(prev + 1, rooms.length - 1)
+      carouselRef.current?.goTo(newIdx)
+      return newIdx
+    })
+  }
+
   return (
     <section className="relative bg-neutral-100 py-30 pr-[min(16.25vw,19.5rem)] flex items-end gap-10">
       <div className="shrink-0">
         <ImgCarousel
+          ref={carouselRef}
           imgUrls={imgUrls}
           widthStyle="46.9vw"
           heightStyle="46.9vw"
@@ -62,7 +83,7 @@ export default function Room() {
       </div>
 
       <div className="flex flex-col gap-y-10 relative z-1">
-        <div>
+        <div className="w-[32.7vw]">
           <p className="text-h2 mb-4">{rooms[currentIdx].name}</p>
           <p className="text-body">{rooms[currentIdx].intro}</p>
         </div>
@@ -74,19 +95,11 @@ export default function Room() {
         <HeroButton label="查看更多" />
 
         <div className="text-right">
-          <Button
-            variant="ghost"
-            onClickHandler={() => setCurrentIdx(prev => Math.max(prev - 1, 0))}
-          >
-            <Icon path={mdiArrowLeft} size={1} />
+          <Button variant="ghost" onClickHandler={() => handlePrevClick()}>
+            <Icon path={mdiArrowLeft} size={1} className="text-primary-100" />
           </Button>
-          <Button
-            variant="ghost"
-            onClickHandler={() =>
-              setCurrentIdx(prev => Math.min(prev + 1, rooms.length - 1))
-            }
-          >
-            <Icon path={mdiArrowRight} size={1} />
+          <Button variant="ghost" onClickHandler={() => handleNextClick()}>
+            <Icon path={mdiArrowRight} size={1} className="text-primary-100" />
           </Button>
         </div>
       </div>
