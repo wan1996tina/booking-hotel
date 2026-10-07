@@ -99,7 +99,7 @@ export default function ImgCarousel({
     <div
       className="relative overflow-hidden"
       style={{
-        width: widthStyle ?? '100vw',
+        width: widthStyle ?? '100%',
         height: heightStyle ?? '100dvh',
       }}
     >
@@ -120,7 +120,7 @@ export default function ImgCarousel({
             key={i}
             className="object-cover"
             style={{
-              width: widthStyle ?? '100vw',
+              width: widthStyle ?? '100%',
               height: heightStyle ?? '100dvh',
             }}
           ></img>

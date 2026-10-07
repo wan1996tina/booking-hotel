@@ -3,6 +3,7 @@ import News from './components/News'
 import About from './components/About'
 import Room from './components/Room'
 import Meal from './components/Meal'
+import Traffic from './components/Traffic'
 
 export default function HomePage() {
   return (
@@ -12,6 +13,7 @@ export default function HomePage() {
       <About />
       <Room />
       <Meal />
+      <Traffic />
     </>
   )
 }
